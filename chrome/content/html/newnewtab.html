@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>NewNewTab</title>
+        <script>
+            if (window.location.protocol === "about:") {
+                document.write('<base href="chrome://newnewtab/content/" />');
+            }
+        </script>
+        <link rel="stylesheet" href="vendor/bootstrap-3.3.4-dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="vendor/bootstrap-3.3.4-dist/css/bootstrap-theme.min.css">
+    </head>
+    <body>
+        <div id="content">
+            <h1>hi!</h1>
+        </div>
+        <script src="vendor/react-0.13.3/react.js"></script>
+        <script src="vendor/react-0.13.3/JSXTransformer.js"></script>
+        <script type="text/jsx" src="js/newnewtab.js"></script>
+    </body>
+</html>
