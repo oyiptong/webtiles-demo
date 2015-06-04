@@ -13,3 +13,13 @@ self.port.on("jsx", function(path) {
   document.body.appendChild(script);
   console.info(`APPENDED ${path}`);
 });
+
+var addon = createObjectIn(document.defaultView, { defineAs: "addon" });
+var on = (type, callback) => {
+  self.port.on(type, data => {
+    callback(data);
+  })
+};
+var emit = (type, data) => self.port.emit(type, data);
+exportFunction(on, addon, { defineAs: "on", "allowCallbacks": true })
+exportFunction(emit, addon, { defineAs: "emit" })
