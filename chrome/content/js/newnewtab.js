@@ -8,6 +8,7 @@ var Tile = React.createClass({
       imageURI: '',
       enhancedImageURI: null,
       lastVisitDate: null,
+      bgColor: null,
       type: '',
       enhancedImageURIState: {display: 'none'},
       imageURIState: {display: 'block'},
@@ -34,12 +35,14 @@ var Tile = React.createClass({
   render: function() {
     var imageURIStyle = {
       backgroundImage: 'url(' + this.props.tile.imageURI + ')',
-      display: this.props.tile.imageURIState.display
+      display: this.props.tile.imageURIState.display,
+      backgroundColor: this.props.tile.bgColor
     };
 
     var enhancedImageURIStyle = {
       backgroundImage: this.props.tile.enhancedImageURI ? 'url(' + this.props.tile.enhancedImageURI + ')' : null,
-      display: this.props.tile.enhancedImageURIState.display
+      display: this.props.tile.enhancedImageURIState.display,
+      backgroundColor: this.props.tile.bgColor
     };
 
     return (
@@ -83,7 +86,7 @@ var TileGrid = React.createClass({
     return (
       <div id="newtab-grid">
         {tiles.map(function(tile) {
-          return <Tile tile={tile}/>;
+          return <Tile tile={tile} key={tile.directoryId}/>;
         })}
       </div>
     );
