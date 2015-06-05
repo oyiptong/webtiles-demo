@@ -18,16 +18,16 @@ var Tile = React.createClass({
 
   onMouseOver: function() {
     if (this.props.tile.enhancedImageURI) {
-      this.props.tile.enhancedImageURIState.display = 'block';
-      this.props.tile.imageURIState.display = 'none';
+      this.props.tile.enhancedImageURIState.display = 'none';
+      this.props.tile.imageURIState.display = 'block';
       this.forceUpdate();
     }
   },
 
   onMouseOut: function() {
     if (this.props.tile.enhancedImageURI) {
-      this.props.tile.enhancedImageURIState.display = 'none';
-      this.props.tile.imageURIState.display = 'block';
+      this.props.tile.enhancedImageURIState.display = 'block';
+      this.props.tile.imageURIState.display = 'none';
       this.forceUpdate();
     }
   },
@@ -44,6 +44,11 @@ var Tile = React.createClass({
       display: this.props.tile.enhancedImageURIState.display,
       backgroundColor: this.props.tile.bgColor
     };
+
+    if (enhancedImageURIStyle.backgroundImage == null) {
+      enhancedImageURIStyle.display = 'none';
+      imageURIStyle.display = 'block';
+    }
 
     return (
         <div className="newtab-cell" onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut}>
@@ -71,9 +76,8 @@ var TileGrid = React.createClass({
       if (this.isMounted()) {
         for (var i=0; i < items.length; i++) {
           var item = items[i];
-          item.enhancedImageURIState = {display: 'none'};
+          item.enhancedImageURIState = {display: 'block'};
           item.imageURIState = {display: 'block'};
-          item.buttons = {display: 'none'};
         }
         this.setState({tiles: items});
       }
