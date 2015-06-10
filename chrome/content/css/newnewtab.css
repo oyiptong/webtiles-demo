@@ -81,3 +81,21 @@
 #newtab-scrollbox {
     overflow: visible !important;
 }
+
+.newtab-rss {
+    overflow: scroll;
+    width: 290px;
+    height: 210px;
+    font-family: 'Lucida Grande';
+    font-size: 13px;
+}
+
+.newtab-rss li {
+    list-style-type: none;
+    padding-bottom: 1em;
+}
+
+.newtab-rss ul {
+    text-align: left;
+    padding: 0 10px 0 10px;
+}
